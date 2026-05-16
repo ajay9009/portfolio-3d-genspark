@@ -1,0 +1,76 @@
+// Demo courses data (used as fallback when DB is empty or unavailable)
+export const DEMO_COURSES = [
+  {
+    id: 'demo-1',
+    title: 'Android App Development - Zero to Hero',
+    slug: 'android-zero-to-hero',
+    description: 'Complete Android development course. Learn Java, XML, Firebase, and publish your first app on Play Store.',
+    price_inr: 2999,
+    content_url: 'https://example.com/course1',
+    thumbnail_color: 'from-violet-500 to-purple-700',
+    lessons: ['Setting up Android Studio', 'Java Fundamentals', 'XML Layouts & Views', 'Activities & Intents', 'Firebase Integration', 'Play Store Publishing'],
+    is_published: true,
+  },
+  {
+    id: 'demo-2',
+    title: 'Firebase Masterclass for Android',
+    slug: 'firebase-masterclass',
+    description: 'Master Firebase Auth, Firestore, Cloud Functions, Push Notifications, and Analytics for Android apps.',
+    price_inr: 1999,
+    content_url: 'https://example.com/course2',
+    thumbnail_color: 'from-amber-400 to-orange-600',
+    lessons: ['Firebase Setup', 'Authentication', 'Cloud Firestore', 'Realtime Database', 'Cloud Functions', 'Push Notifications', 'Analytics & Crashlytics'],
+    is_published: true,
+  },
+  {
+    id: 'demo-3',
+    title: 'Play Store ASO & Publishing Guide',
+    slug: 'playstore-aso-guide',
+    description: 'Learn App Store Optimization, keyword research, screenshot design, and monetization strategies.',
+    price_inr: 999,
+    content_url: 'https://example.com/course3',
+    thumbnail_color: 'from-emerald-400 to-teal-600',
+    lessons: ['Play Console Setup', 'App Listing Optimization', 'Keyword Research', 'Screenshot Design', 'Monetization Strategies', 'Review Management'],
+    is_published: true,
+  },
+];
+
+// Demo services data
+export const DEMO_SERVICES = [
+  {
+    id: 'demo-s1',
+    title: 'Starter Call',
+    slug: 'starter',
+    description: 'Quick Q&A session to validate your app idea',
+    price_inr: 499,
+    duration_min: 20,
+    features: ['Quick Q&A session', 'App idea validation', 'Email follow-up'],
+  },
+  {
+    id: 'demo-s2',
+    title: 'App Strategy',
+    slug: 'strategy',
+    description: 'Get a complete strategy document and tech stack advice',
+    price_inr: 999,
+    duration_min: 30,
+    features: ['Strategy document', 'Tech stack advice', 'Architecture review', 'Roadmap planning'],
+  },
+  {
+    id: 'demo-s3',
+    title: 'Mentorship',
+    slug: 'mentorship',
+    description: 'Deep-dive 1:1 session with code review and career guidance',
+    price_inr: 1999,
+    duration_min: 60,
+    features: ['Deep-dive session', 'Code review', 'Career guidance', 'Project feedback', 'Slack follow-up'],
+  },
+  {
+    id: 'demo-s4',
+    title: 'Full Consultation',
+    slug: 'full',
+    description: 'Complete architecture plan with 30-day email support',
+    price_inr: 4999,
+    duration_min: 90,
+    features: ['Complete architecture plan', 'Detailed roadmap', 'Tech stack decisions', 'Database design', '30-day email support'],
+  },
+];
