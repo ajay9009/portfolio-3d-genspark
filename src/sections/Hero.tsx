@@ -132,7 +132,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-8 text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight min-h-[120px] sm:min-h-[140px] md:min-h-0"
+            className="mt-8 text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight min-h-[120px] sm:min-h-[140px] md:min-h-0 break-words max-w-full"
           >
             I&apos;m a{' '}
             <span className="relative">
