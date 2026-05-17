@@ -1,19 +1,29 @@
 'use client';
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
-import { LogIn, UserPlus, KeyRound, ArrowLeft, Mail } from 'lucide-react';
+import { LogIn, UserPlus, KeyRound, ArrowLeft, Mail, Eye, EyeOff } from 'lucide-react';
 
 function LoginForm() {
   const router = useRouter();
-  const next = useSearchParams().get('next') || '/dashboard';
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next') || '/dashboard';
+  const urlError = searchParams.get('error');
+  
   const [mode, setMode] = useState<'login' | 'signup' | 'reset'>('login');
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
+  const [showPw, setShowPw] = useState(false);
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (urlError) {
+      toast.error(decodeURIComponent(urlError.replace(/\+/g, ' ')));
+    }
+  }, [urlError]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -21,7 +31,7 @@ function LoginForm() {
     try {
       if (mode === 'reset') {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/auth/callback?next=/login`,
+          redirectTo: `${window.location.origin}/auth/callback?next=/update-password`,
         });
         if (error) return toast.error(error.message);
         toast.success('Password reset link sent! Check your email.');
@@ -92,14 +102,23 @@ function LoginForm() {
       />
 
       {mode !== 'reset' && (
-        <input
-          required
-          type="password"
-          placeholder="Password"
-          value={pw}
-          onChange={e => setPw(e.target.value)}
-          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-violet-500 transition-colors"
-        />
+        <div className="relative">
+          <input
+            required
+            type={showPw ? 'text' : 'password'}
+            placeholder="Password"
+            value={pw}
+            onChange={e => setPw(e.target.value)}
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-violet-500 transition-colors pr-12"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPw(!showPw)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-violet-500 hover:text-violet-400 transition-colors"
+          >
+            {showPw ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
       )}
 
       <button disabled={loading} className="btn-primary w-full disabled:opacity-50">
