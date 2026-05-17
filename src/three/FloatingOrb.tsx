@@ -46,7 +46,7 @@ export default function FloatingOrb() {
     <motion.div
       style={{ x, y, scale, opacity }}
       // Use fixed position so it scrolls across the page, but with z-[-1] so it NEVER blocks clicks or text
-      className="fixed top-0 right-0 w-[220px] h-[220px] md:w-[300px] md:h-[300px] -z-10 pointer-events-none"
+      className="hidden md:block fixed top-0 right-0 md:w-[300px] md:h-[300px] -z-10 pointer-events-none"
     >
       {/* Mouse-reactive + bobbing container */}
       <div

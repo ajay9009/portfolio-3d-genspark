@@ -80,7 +80,7 @@ export default function Hero() {
   const bgOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-32">
       {/* Cosmic grid pattern with mouse parallax */}
       <motion.div style={{ opacity: bgOpacity }} className="absolute inset-0 -z-10">
         <div
@@ -132,7 +132,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-8 text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight"
+            className="mt-8 text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight min-h-[120px] sm:min-h-[140px] md:min-h-0"
           >
             I&apos;m a{' '}
             <span className="relative">
@@ -197,7 +197,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="mt-12 flex items-center gap-6 text-sm text-white/50"
+            className="mt-12 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-sm text-white/50"
           >
             <div className="flex gap-3">
               {[
