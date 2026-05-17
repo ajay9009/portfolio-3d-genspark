@@ -18,45 +18,35 @@ export default function FloatingOrb() {
   // Smoother spring — higher stiffness for less "sticking"
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.5 });
 
-  // Smooth mouse tracking via RAF instead of setState re-renders
+  // Update transform only on mouse move (removes the lagging continuous RAF loop)
   const handleMouse = useCallback((e: MouseEvent) => {
-    mouseRef.current = {
-      x: (e.clientX / window.innerWidth - 0.5) * 2,
-      y: -(e.clientY / window.innerHeight - 0.5) * 2,
-    };
+    if (!containerRef.current) return;
+    const mx = (e.clientX / window.innerWidth - 0.5) * 2;
+    const my = -(e.clientY / window.innerHeight - 0.5) * 2;
+    containerRef.current.style.transform =
+      `perspective(600px) rotateY(${mx * 10}deg) rotateX(${my * 6}deg) translateX(${mx * 12}px) translateY(${-my * 8}px)`;
   }, []);
 
   useEffect(() => {
     window.addEventListener('mousemove', handleMouse, { passive: true });
-
-    // RAF loop for smooth mouse transform
-    const animate = () => {
-      if (containerRef.current) {
-        const mx = mouseRef.current.x;
-        const my = mouseRef.current.y;
-        containerRef.current.style.transform =
-          `perspective(600px) rotateY(${mx * 10}deg) rotateX(${my * 6}deg) translateX(${mx * 12}px) translateY(${-my * 8}px)`;
-      }
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouse);
-      cancelAnimationFrame(rafRef.current);
-    };
+    return () => window.removeEventListener('mousemove', handleMouse);
   }, [handleMouse]);
 
-  // Keep it absolute to avoid overlapping content lower on the page (no stucking)
-  const x = useTransform(smoothProgress, [0, 1], ['55%', '40%']);
-  const y = useTransform(smoothProgress, [0, 1], ['10vh', '30vh']);
-  const scale = useTransform(smoothProgress, [0, 1], [1, 0.8]);
-  const opacity = useTransform(smoothProgress, [0, 0.5, 1], [1, 0.5, 0]);
+  // Restore the dynamic floating across sections "like before"
+  const x = useTransform(smoothProgress,
+    [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1],
+    ['52%', '0%', '50%', '2%', '48%', '0%', '50%', '45%']);
+  const y = useTransform(smoothProgress,
+    [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1],
+    ['6vh', '18vh', '10vh', '20vh', '8vh', '22vh', '10vh', '6vh']);
+  const scale = useTransform(smoothProgress, [0, 0.5, 1], [1, 0.88, 0.95]);
+  const opacity = useTransform(smoothProgress, [0, 0.02, 0.92, 1], [1, 1, 1, 0]);
 
   return (
     <motion.div
       style={{ x, y, scale, opacity }}
-      className="absolute top-0 right-0 w-[220px] h-[220px] md:w-[300px] md:h-[300px] z-0 pointer-events-none"
+      // Use fixed position so it scrolls across the page, but with z-[-1] so it NEVER blocks clicks or text
+      className="fixed top-0 right-0 w-[220px] h-[220px] md:w-[300px] md:h-[300px] -z-10 pointer-events-none"
     >
       {/* Mouse-reactive + bobbing container */}
       <div
