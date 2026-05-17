@@ -46,7 +46,7 @@ export default function Navbar() {
       </nav>
       {/* Mobile menu */}
       <div className={`md:hidden overflow-hidden transition-all duration-300 ${open ? 'max-h-96 border-t border-white/10' : 'max-h-0'}`}>
-        <div className="glass px-6 py-4 flex flex-col gap-4">
+        <div className="bg-[#0f0f14]/95 backdrop-blur-xl px-6 py-4 flex flex-col gap-4 shadow-2xl">
           {links.map(l => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
               className="py-2 text-lg font-medium hover:text-violet-400 transition-colors">{l.label}</Link>
