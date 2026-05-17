@@ -5,6 +5,7 @@ import { DEMO_COURSES } from '@/lib/demo-data';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { BookOpen, Clock, PlayCircle } from 'lucide-react';
+import BackToHome from '@/components/BackToHome';
 
 export default function Courses() {
   const [courses, setCourses] = useState<any[]>([]);
@@ -29,15 +30,16 @@ export default function Courses() {
 
   return (
     <main className="pt-28 pb-20 px-6 max-w-7xl mx-auto">
+      <BackToHome />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-4xl md:text-5xl font-bold text-center">
-          Android <span className="gradient-text">Courses</span>
+          Engineering <span className="gradient-text">Courses</span>
         </h1>
         <p className="text-center text-white/60 mt-4">
-          Learn from real production experience. Build apps that actually ship.
+          From Spring Boot microservices to Android apps — learn from real production experience.
         </p>
       </motion.div>
 

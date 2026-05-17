@@ -1,18 +1,18 @@
 import Link from 'next/link';
-import { Code2, ExternalLink, Mail, Heart } from 'lucide-react';
+import { Code2, ExternalLink, Mail, Heart, Rocket } from 'lucide-react';
 
 const footerLinks = [
   { label: 'Apps', href: '/#apps' },
-  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Services', href: '/#pricing' },
   { label: 'Courses', href: '/courses' },
   { label: 'Book', href: '/book' },
   { label: 'Dashboard', href: '/dashboard' },
 ];
 
 const socials = [
-  { icon: Code2, label: 'GitHub', href: 'https://github.com' },
-  { icon: ExternalLink, label: 'LinkedIn', href: 'https://linkedin.com' },
-  { icon: Mail, label: 'Email', href: 'mailto:you@example.com' },
+  { icon: Code2, label: 'GitHub', href: 'https://github.com/ajay9009/' },
+  { icon: ExternalLink, label: 'LinkedIn', href: 'https://www.linkedin.com/in/ajay-singh-9009/' },
+  { icon: Mail, label: 'Email', href: 'mailto:growdigital1996@gmail.com' },
 ];
 
 export default function Footer() {
@@ -22,11 +22,20 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold gradient-text">DevPortfolio</h3>
+            <h3 className="text-xl font-bold flex items-center gap-2">
+              <Rocket size={18} className="text-violet-400" />
+              <span className="gradient-text">AjaySingh</span>
+              <span className="text-xs font-mono text-white/30">.dev</span>
+            </h3>
             <p className="mt-3 text-[rgb(var(--fg))]/60 text-sm leading-relaxed">
-              Android Developer with 10+ live apps on Play Store.
-              Building scalable, production-grade mobile applications.
+              Software Engineer at Accenture. 4+ years building enterprise
+              backend systems & 10+ Android apps on Play Store.
             </p>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {['Java', 'Spring Boot', 'Microservices', 'Android'].map(t => (
+                <span key={t} className="text-[10px] px-2 py-0.5 rounded-full glass text-white/40 font-mono">{t}</span>
+              ))}
+            </div>
           </div>
           {/* Quick Links */}
           <div>
@@ -54,7 +63,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-[rgb(var(--fg))]/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-[rgb(var(--fg))]/40 text-sm">
-            © {new Date().getFullYear()} Android Developer Portfolio
+            © {new Date().getFullYear()} Ajay Singh · Software Engineer
           </p>
           <p className="text-[rgb(var(--fg))]/40 text-sm flex items-center gap-1">
             Built with <Heart size={14} className="text-red-400" /> using Next.js & React Three Fiber

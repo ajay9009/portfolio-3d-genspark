@@ -6,7 +6,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Script from 'next/script';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, CreditCard, Check } from 'lucide-react';
+import { Calendar, Clock, CreditCard, Check, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 const SLOTS = ['10:00 AM', '10:30 AM', '11:00 AM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM'];
 
@@ -268,6 +269,12 @@ function BookForm() {
 export default function BookPage() {
   return (
     <main className="pt-28 pb-20 px-6">
+      <div className="max-w-4xl mx-auto mb-8">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors group">
+          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+          Back to Home
+        </Link>
+      </div>
       <Script src="https://checkout.razorpay.com/v1/checkout.js"/>
       <Suspense fallback={<div className="max-w-4xl mx-auto glass rounded-3xl p-8 text-center text-white/60">Loading...</div>}>
         <BookForm />

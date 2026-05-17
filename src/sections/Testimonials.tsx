@@ -13,21 +13,21 @@ const TESTIMONIALS = [
   {
     name: 'Priya S.',
     role: 'Startup Founder',
-    text: 'Best consultation I had — saved me weeks of work. His code review caught critical bugs before our launch.',
+    text: 'His Spring Boot consultation saved us weeks. He redesigned our entire API architecture and our response times dropped by 40%.',
     rating: 5,
     avatar: '👩‍💼',
   },
   {
     name: 'Ravi M.',
     role: 'Tech Lead',
-    text: 'Production-quality code from day one. Clean architecture, proper error handling, and great communication throughout.',
+    text: 'Production-quality microservices from day one. Clean code, proper error handling, and great understanding of event-driven systems.',
     rating: 5,
     avatar: '👨‍💻',
   },
   {
     name: 'Sneha D.',
-    role: 'Freelancer',
-    text: 'The mentorship session was incredibly valuable. I went from confused beginner to building real apps in under a month.',
+    role: 'Backend Developer',
+    text: 'The Kafka + Spring Boot session was incredibly valuable. Went from confused about event-driven patterns to implementing them in production.',
     rating: 5,
     avatar: '👩‍🎓',
   },
@@ -35,7 +35,7 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="py-28 px-6">
+    <section className="py-28 px-6 section-nebula">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -43,7 +43,7 @@ export default function Testimonials() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-center">
-            What Clients <span className="gradient-text">Say</span>
+            Stellar <span className="gradient-text">Reviews</span>
           </h2>
           <p className="text-center text-white/60 mt-4">Real feedback from real people</p>
         </motion.div>

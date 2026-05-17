@@ -7,12 +7,12 @@ import FloatingCTA from '@/components/FloatingCTA';
 import AnimatedCursor from '@/components/AnimatedCursor';
 
 export const metadata: Metadata = {
-  title: 'Android Developer | Java Developer | Freelance App Developer',
-  description: 'I build Android apps that actually scale. 10+ live Play Store apps. Java, XML, Firebase. Hire me or book a consultation.',
-  keywords: ['Android Developer', 'Java Developer', 'App Developer Freelancer', 'Firebase', 'Android Mentor'],
+  title: 'Ajay Singh | Software Engineer | Spring Boot · Microservices · Android',
+  description: 'Sr. Analyst @ Accenture | Ex-Infosys | 4+ years building enterprise backend systems with Java, Spring Boot, Microservices, REST APIs, and 10+ Android apps on Play Store.',
+  keywords: ['Software Engineer', 'Java Developer', 'Spring Boot', 'Microservices', 'Android Developer', 'REST API', 'Backend Engineer', 'Accenture', 'Freelancer'],
   openGraph: {
-    title: 'I Build Android Apps That Actually Scale',
-    description: '10+ live apps on Play Store. Book a consultation.',
+    title: 'Ajay Singh — Software Engineer & Android Developer',
+    description: 'Enterprise backend systems + 10+ Play Store apps. Book a consultation.',
     type: 'website',
   },
 };

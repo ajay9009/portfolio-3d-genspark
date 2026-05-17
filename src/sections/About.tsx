@@ -1,17 +1,19 @@
 'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { Smartphone, Star, TrendingUp } from 'lucide-react';
+import { Server, Smartphone, Star, TrendingUp, Building2, Shield } from 'lucide-react';
 
 const STATS = [
+  { icon: Building2, value: '4+', label: 'Years Experience' },
+  { icon: Server, value: '200+', label: 'Tests Written' },
   { icon: Smartphone, value: '10+', label: 'Live Apps' },
-  { icon: Star, value: '4.5+', label: 'Avg Rating' },
-  { icon: TrendingUp, value: '50K+', label: 'Downloads' },
+  { icon: TrendingUp, value: '30%', label: 'API Speedup' },
+  { icon: Shield, value: '90%+', label: 'Code Coverage' },
+  { icon: Star, value: '3', label: 'Fortune 500 Clients' },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-28 px-6">
+    <section id="about" className="py-28 px-6 section-nebula">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -23,18 +25,36 @@ export default function About() {
           {/* Avatar / Visual */}
           <div className="md:col-span-2 flex justify-center">
             <div className="relative">
-              <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-violet-600 to-cyan-500 p-[2px]">
-                <div className="w-full h-full rounded-3xl glass flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-2">👨‍💻</div>
-                    <p className="font-bold text-lg">Android Dev</p>
-                    <p className="text-white/60 text-sm">Since 2021</p>
+              <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-violet-600 via-cyan-500 to-pink-500 p-[2px]">
+                <div className="w-full h-full rounded-3xl glass flex items-center justify-center relative overflow-hidden">
+                  {/* Animated orbit decoration */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-48 h-48 border border-violet-500/10 rounded-full orbit" style={{ ['--speed' as any]: '15s', ['--radius' as any]: '0px' }} />
+                  </div>
+                  <div className="text-center relative z-10">
+                    <div className="text-6xl mb-2">🚀</div>
+                    <p className="font-bold text-lg">Ajay Singh</p>
+                    <p className="text-white/60 text-xs mt-1 font-mono">Sr. Analyst</p>
+                    <p className="text-white/40 text-xs">Accenture</p>
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-2 text-sm">
-                <span className="text-green-400">●</span> Available for hire
-              </div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-2 text-sm pulse-ring"
+              >
+                <span className="text-green-400">●</span> Open to Collaborate
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="absolute -top-3 -left-3 glass rounded-xl px-3 py-1.5 text-xs"
+              >
+                🏢 Ex-Infosys
+              </motion.div>
             </div>
           </div>
 
@@ -44,31 +64,31 @@ export default function About() {
               About <span className="gradient-text">Me</span>
             </h2>
             <p className="mt-6 text-white/75 leading-relaxed text-lg">
-              I&apos;m an Android developer with <strong>10+ apps</strong> shipped on the Play Store,
-              built with Java and XML and powered by Firebase. I&apos;ve worked on enterprise-grade
-              projects where reliability matters, and on indie reward/crypto apps where speed-to-market
-              wins.
+              I&apos;m a <strong>Software Engineer</strong> at <strong>Accenture</strong> with 4+ years of experience
+              building enterprise-grade backend systems for <strong>Fortune 500</strong> clients in the financial services
+              and insurance domain. Previously at <strong>Infosys</strong>, I delivered Spring Boot microservices
+              for Securian Financial, Allstate, and Allianz.
             </p>
             <p className="mt-4 text-white/60 leading-relaxed">
-              I understand the full app lifecycle — from Figma mockups to Play Store ASO and
-              post-launch crash analytics. Whether you need a polished MVP or need to scale
-              an existing app, I bring real production experience to every project.
+              Beyond enterprise work, I&apos;ve shipped <strong>10+ Android apps</strong> on the Play Store —
+              from reward platforms to crypto trackers. I bring both corporate-scale architecture
+              and indie-app speed to every project.
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mt-8">
               {STATS.map((s, i) => (
                 <motion.div
                   key={s.label}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.1 }}
-                  className="glass rounded-xl p-4 text-center"
+                  transition={{ delay: 0.2 + i * 0.08 }}
+                  className="glass rounded-xl p-3 text-center hover:glow-violet transition-shadow"
                 >
-                  <s.icon size={24} className="mx-auto text-violet-400 mb-2" />
-                  <div className="text-2xl font-bold">{s.value}</div>
-                  <div className="text-xs text-white/60 mt-1">{s.label}</div>
+                  <s.icon size={18} className="mx-auto text-violet-400 mb-1.5" />
+                  <div className="text-lg font-bold font-mono">{s.value}</div>
+                  <div className="text-[10px] text-white/50 mt-0.5 leading-tight">{s.label}</div>
                 </motion.div>
               ))}
             </div>

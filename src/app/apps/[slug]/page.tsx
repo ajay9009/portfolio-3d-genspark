@@ -83,15 +83,18 @@ export default async function AppPage({
           <div>
             <h2 className="text-3xl font-bold">Screenshots</h2>
             <div className="mt-6 grid grid-cols-2 gap-4">
-              {app.screenshots.map((_, i) => (
+              {app.screenshots.map((src, i) => (
                 <div
                   key={i}
-                  className={`aspect-[9/19] rounded-2xl bg-gradient-to-b ${app.color} flex items-center justify-center shadow-lg`}
+                  className="rounded-2xl overflow-hidden shadow-lg bg-black/20 backdrop-blur-sm"
                 >
-                  <div className="text-center text-white/70">
-                    <div className="text-3xl mb-1">📱</div>
-                    <span className="text-xs">Screen {i + 1}</span>
-                  </div>
+                  <Image
+                    src={src}
+                    alt={`${app.name} screenshot ${i + 1}`}
+                    width={300}
+                    height={600}
+                    className="w-full h-auto object-cover rounded-2xl"
+                  />
                 </div>
               ))}
             </div>

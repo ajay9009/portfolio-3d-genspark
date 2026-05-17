@@ -2,6 +2,7 @@ import { APPS } from '@/lib/apps-data';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import BackToHome from '@/components/BackToHome';
 
 export const metadata: Metadata = {
   title: 'All Apps | Android Developer Portfolio',
@@ -12,6 +13,7 @@ export default function AppsPage() {
   return (
     <main className="pt-28 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
+        <BackToHome />
         <h1 className="text-4xl md:text-5xl font-bold text-center">
           My <span className="gradient-text">Apps</span>
         </h1>

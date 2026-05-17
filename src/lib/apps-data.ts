@@ -18,9 +18,9 @@ export const APPS: AppData[] = [
         description: 'Rewardly lets users complete simple tasks and earn redeemable rewards. Built with Java + Firebase, scaled to thousands of installs.',
         features: ['Daily tasks & spins', 'Real cash rewards', 'Firebase auth', 'Push notifications', 'Referral system'],
         image: '/apps/rewardly.png',
-        screenshots: ['/screenshots/rewardly-1.png', '/screenshots/rewardly-2.png', '/screenshots/rewardly-3.png'],
+        screenshots: ['/apps/rewardly-ss1.png', '/apps/rewardly-ss2.png'],
         playStoreUrl: 'https://play.google.com/store/apps/details?id=com.app.rewardly',
-        color: 'from-amber-400 to-orange-600',
+        color: 'from-violet-600 to-blue-500',
     },
     {
         slug: 'rewardplay',
