@@ -32,10 +32,10 @@ export default function FloatingOrb() {
     return () => window.removeEventListener('mousemove', handleMouse);
   }, [handleMouse]);
 
-  // Restore the dynamic floating across sections "like before"
+  // X translation uses negative values so it moves left into the screen, NEVER off the right edge
   const x = useTransform(smoothProgress,
     [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1],
-    ['52%', '0%', '50%', '2%', '48%', '0%', '50%', '45%']);
+    ['-2%', '-35%', '-10%', '-45%', '-15%', '-50%', '-20%', '-5%']);
   const y = useTransform(smoothProgress,
     [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1],
     ['6vh', '18vh', '10vh', '20vh', '8vh', '22vh', '10vh', '6vh']);

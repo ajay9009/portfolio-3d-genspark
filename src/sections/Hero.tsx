@@ -154,6 +154,7 @@ export default function Hero() {
           >
             Java · Spring Boot · Microservices · REST APIs · Android · AWS
             <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
             Building enterprise-grade systems that scale for Fortune 500 clients.
           </motion.p>
 
