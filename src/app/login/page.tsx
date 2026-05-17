@@ -30,8 +30,18 @@ function LoginForm() {
     setLoading(true);
     try {
       if (mode === 'reset') {
-        const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/auth/callback?next=/update-password`,
+        // Create a specialized client using implicit flow just for password resets.
+        // This completely bypasses the PKCE cross-browser/in-app-browser restrictions
+        // so users can open the reset link from their email apps seamlessly.
+        const { createClient } = await import('@supabase/supabase-js');
+        const implicitSupabase = createClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+          { auth: { flowType: 'implicit' } }
+        );
+
+        const { error } = await implicitSupabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/update-password`,
         });
         if (error) return toast.error(error.message);
         toast.success('Password reset link sent! Check your email.');
