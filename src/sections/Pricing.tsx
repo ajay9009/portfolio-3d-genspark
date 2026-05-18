@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Check, Zap, Server, Smartphone, Cloud, Code2 } from 'lucide-react';
+import { Check, Zap, Server, Smartphone, Cloud, Code2, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import { DEMO_SERVICES } from '@/lib/demo-data';
