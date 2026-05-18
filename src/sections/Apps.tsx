@@ -22,7 +22,7 @@ export default function Apps() {
           </p>
         </motion.div>
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
-          {APPS.map((app, i) => (
+          {APPS.slice(0, 3).map((app, i) => (
             <motion.div
               key={app.slug}
               initial={{ opacity: 0, y: 40 }}
@@ -63,6 +63,16 @@ export default function Apps() {
             </motion.div>
           ))}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 flex justify-center"
+        >
+          <Link href="/apps" className="btn-ghost">
+            View All Apps <ChevronRight size={16} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

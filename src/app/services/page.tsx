@@ -5,6 +5,7 @@ import { Check, Zap, Server, Smartphone, Cloud, Code2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import { DEMO_SERVICES } from '@/lib/demo-data';
+import BackToHome from '@/components/BackToHome';
 
 const ICON_MAP: Record<string, any> = {
   'android-consultation': Smartphone,
@@ -13,7 +14,7 @@ const ICON_MAP: Record<string, any> = {
   'full-stack-strategy': Cloud,
 };
 
-export default function Pricing() {
+export default function ServicesPage() {
   const [plans, setPlans] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -70,31 +71,27 @@ export default function Pricing() {
   }, []);
 
   return (
-    <section id="pricing" className="py-28 px-6 section-nebula">
+    <main className="pt-28 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-center">
-            Consultation <span className="gradient-text">Plans</span>
-          </h2>
-          <p className="text-center text-white/60 mt-4">Specialized services tailored to your needs. Pay securely via Razorpay.</p>
-        </motion.div>
+        <BackToHome />
+        <h1 className="text-4xl md:text-5xl font-bold text-center">
+          Client <span className="gradient-text">Services</span>
+        </h1>
+        <p className="text-center text-white/60 mt-4">
+          Specialized services tailored to your needs. Build your next enterprise product with me.
+        </p>
 
         {loading ? (
-          <div className="text-center text-white/60 py-16">Loading plans...</div>
+          <div className="text-center text-white/60 py-16">Loading services...</div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
-            {plans.slice(0, 3).map((p, i) => {
+            {plans.map((p, i) => {
               const IconComp = ICON_MAP[p.slug] || Code2;
               return (
                 <motion.div
                   key={p.slug}
                   initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
                   className={`rounded-2xl p-6 relative flex flex-col group hover:scale-[1.02] transition-transform ${
                     p.popular
@@ -144,18 +141,7 @@ export default function Pricing() {
             })}
           </div>
         )}
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 flex justify-center"
-        >
-          <Link href="/services" className="btn-ghost">
-            View All Services <ChevronRight size={16} />
-          </Link>
-        </motion.div>
       </div>
-    </section>
+    </main>
   );
 }
